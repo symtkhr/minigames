@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="decbin.js"></script>
+<title>Dec2Bin</title>
+<style>
+  #bin {
+    line-height:60px;
+  font-size:20px;
+  display:inline-block;
+  }
+  .bit {
+  position:relative;
+     display: inline-block;
+     border:1px solid gray;
+  width: 60px;
+  height: 60px;
+  margin-right: 2px;
+  font-size: 60px;
+  line-height:60px;
+  text-align: center;
+  }
+
+  .bit.selected {
+  background-color: #fdd;
+  }
+
+  #qbox {
+    display: inline-block;
+    width: 150px;
+    text-align: center;
+    position:relative;
+    height: 60px;
+
+  }
+  
+  #qbox .hint {
+  display:block;
+  position:absolute;
+  left: 0;
+  bottom:-40px;
+  width: 150px;
+  height: 40px;
+
+  font-size: 20px;
+
+  }
+  #quiz {
+     display:none;
+     font-size: 60px;
+  }
+  .digit {
+  bottom:0; right:0; position:absolute; width:60px; height:20px;
+  font-size:15pt; color:red;
+  }
+  .miss {
+  left:0; top:0; position:absolute;
+  width:60px; height:60px; display:none; font-size:60pt; color:red;
+  }
+  .st {
+  font-size: 30px;
+  }
+  #elapsedbar {
+  display: inline-block;
+  height: 20px;
+  width: 300px;
+  background-color: #88f;
+  }
+.qid {
+    border-radius:20px; float:left; background-color:#9df;
+    width:40px; height:40px; line-height:40px;text-align:center;
+}  
+</style>  
+</head>
+<body>
+  <div id="main">
+    <div style="margin:5px; height:50px; display:inline-block;">
+      <div class="qid"></div> 十進 →  二進
+      変換。全<span id="qmax">5</span>問。
+      回答時間 = <div id="elapsedbar">20</div>
+    </div>
+    <div id="quiz" style="border:1px solid red; height: 100px;">
+      <div id="qbox"><span id="dec">78</span><span class="hint">a_</span></div> = <span id="bin">0b
+        <span class="bit">_</span><span class="bit">_</span><span class="bit">_</span><span class="bit">_</span>
+        <span class="bit">_</span><span class="bit">_</span><span class="bit">_</span><span class="bit">_</span>
+      </span>
+    </div>
+    <div class="st">Enterキーで開始</div>
+  </div>
+  <hr style="clear:both;">
+ </div>

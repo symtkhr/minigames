@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-jp" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>-</title>
+<script type="text/javascript" src="takoburn.js"></script>
+<link rel="stylesheet" type="text/css" href="tako.css">
+</head>
+<body>
+<h2>Takoyaki burner</h2>
+<p>
+This is an application to solve the game <a href="http://www.gamedesign.jp/flash/tacoyaki/tacoyaki.html" target="_blank">Takoyaki</a> &amp; <a href="http://www.gamedesign.jp/flash/tacoyaki_p/tacoyaki_p.html" target="_blank">Takoyaki+</a> (commonly known as "Lights Out"). <br>
+See also <a href="http://www.ic-net.or.jp/home/takaken/nt/light/light2.html" target="_blank">Reference</a> as for the algorithm.
+</p>
+<div>
+<ul>
+<li>Board name: <select name="boardname" id="boardname">
+<option value="plus">Takoyaki+</option>
+<option value="zero">Takoyaki</option>
+</select></li>
+<li>Size of board: <select name="boardsize" id="boardsize">
+<option value="4">4</option>
+<option value="5" selected>5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+</select></li>
+<li>Input method: <input type="button" class="method" value="One-by-one / [Simulation]"></li>
+<li>The current state:</li>
+</ul>
+<div style="width:320px; text-align:center;">
+<table id="present"></table>
+<span style="font-size: 50pt;">&#x21E7;</span>
+<table id="solution"></table>
+<span class="lock"></span>
+</div>
+</div>
+<hr style="clear:both;">
+<footer style="text-align:right;">Released: 2021-05-30</footer>
+</body>

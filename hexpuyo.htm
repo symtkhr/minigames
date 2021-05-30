@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="hexpuyo.js"></script>
+<title>Hexagon Puyopuyo</title>
+<style>
+.hexagon {
+  width: 25px;
+  height: 44px;
+  background: #ccf;
+  position: absolute;
+}
+.hexagon::before,
+.hexagon::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #ccf;
+  z-index: 0;
+}
+.hexagon::before {
+  transform: rotate(60deg);
+}
+.hexagon::after {
+  transform: rotate(-60deg);
+}
+.puyo {
+  z-index:1;
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border-radius: 20px;
+  border: 2px solid black;
+  color:white;
+  text-align:center;
+}
+.hexagon .puyo {
+  position: absolute;
+  left:-6px;
+  top:2px;
+}
+.puyo::before,
+.puyo::after {
+  content: "";
+  width: 10%;
+  height: 10%;
+  position: absolute;
+  background: #ffe;
+  border-radius:50%;
+  z-index: 1;
+}
+.puyo::before {
+  top: 15px;
+  left:5px;
+}
+.puyo::after {
+  top: 13px;
+  right:4px;
+}
+.puyo.combine {
+  border-color:red;
+}
+.puyo.alive {
+  border-color:white;
+}
+.puyo.interfere {
+  border-color:gray;
+  background-color:none;
+}
+.puyo .face {
+  position:relative; white-space:nowrap; top: 10px; left:0px;
+}
+
+#command {
+  position:absolute; top:200px; left:60px; background-color: #3c7; border-radius:40px; padding:10px; border:1px solid gray;
+}
+.rensa {
+ text-align:center; position:absolute; border-radius:10px; z-index:3;
+ background-color:white; color:red; width:100px; height:20px; opacity:.7;
+}
+
+</style>
+</head>
+
+<body>
+<h2>Hexagon Puyopuyo</h2>
+<div style="display:flex">
+  <div style="position:relative; margin:0 10px; width:calc(40px * 6.5); height: calc(46px * 13); overflow:hidden; background-color: #989;" id="hexcells"></div>
+  <div id="command">Press any key to start. </div>
+  <div>
+    <div id="next" style="background-color:gray; height:170px; width:45px; color:white; padding:5px; margin: 0 5px;">
+      Next
+      <div id="fp1"></div>
+      <div id="fp2"></div>
+      Obsta
+      <div id="jp0"></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

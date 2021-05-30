@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="dechex.js"></script>
+<title>DecHex</title>
+<style>
+  #hex {
+    line-height:60px;
+    font-size:20px;
+    display:inline-block;
+  }
+  .nibble {
+  position:relative;
+  display: inline-block;
+     border:1px solid gray;
+  width: 60px;
+  height: 60px;
+  margin-right: 2px;
+  font-size: 60px;
+  line-height:60px;
+  text-align: center;
+  }
+
+  .nibble.selected {
+  background-color: #fdd;
+  }
+  #qbox {
+    display: inline-block;
+    width: 150px;
+    text-align: center;
+    position:relative;
+    height: 60px;
+
+  }
+  
+  #qbox .hint {
+  display:block;
+  position:absolute;
+  left: 0;
+  bottom:-40px;
+  width: 150px;
+  height: 40px;
+  color:red;
+  font-size: 30px;
+  }
+  
+  #quiz {
+     display:none;
+     font-size: 60px;
+  }
+  .digit {
+  bottom:0; right:0; position:absolute; width:60px; height:20px;
+  font-size:15pt; color:red;
+  white-space:nowrap;
+  }
+  .miss {
+  left:0; top:0; position:absolute;
+  width:60px; height:60px; display:none; font-size:60pt; color:red;
+  }
+  .st {
+  font-size: 30px;
+  }
+  #elapsedbar {
+  display: inline-block;
+  height: 20px;
+  width: 300px;
+  background-color: #88f;
+  }
+.qid {
+    border-radius:20px; float:left; background-color:#9df;
+    width:40px; height:40px; line-height:40px;text-align:center;
+  }
+          #line16 {
+         width: 800px;
+           margin: 30px 20px;
+        
+        }
+        #line16:after {
+        content:'　';
+        clear:both;
+        }
+        .line {
+        width:50px; margin:0; height:2px;background-color:#26f; float:left; position:relative;
+        }
+        .line:last-child {
+        width:0;
+        }
+
+        .linedec, .linehex {
+        font-size: 20px;
+        position:absolute;
+        left: -25px;
+        width: 50px;
+        top: -25px;
+        text-align:center;
+        }
+        .linehex {
+            top:5px;
+        }
+   .dot, #qdot {
+  position:absolute; left:0; top:-3px; width:8px;
+  height:8px; background-color: #26f;
+  border-radius: 4px;
+        }
+
+        #qdot {
+        background-color: transparent;
+        border:solid red 2px;
+        left: 98px;
+        top:-5px; width:10px;
+        border-radius: 7px;
+        height:10px;
+        z-index:1;
+        display:none;
+        }
+        
+
+</style>  
+</head>
+<body>
+  <div id="main">
+    <div style="margin:5px; height:50px; display:inline-block;">
+      <div class="qid"></div> 十進 → 十六進
+      変換。全<span id="qmax">10</span>問。
+      回答時間 = <div id="elapsedbar">30</div>
+    </div>
+    <div id="quiz" style="border:1px solid red; height:100px;">
+      <div id="qbox"><span id="dec">78</span><span class="hint">a_</span></div> = <span id="hex">0x
+        <span class="nibble" id="hex1">_</span><span class="nibble" id="hex0">_</span>
+      </span>
+    </div>
+    <div id="hint" style="display:none;">
+      <style>
+      </style>
+      【ヒント】
+      <span class="hint2"></span>
+      <div id="line16"></div>
+    </div>
+    
+    <div class="st">Enterキーで開始</div>
+  </div>
+  <hr style="clear:both;">
+ </div>

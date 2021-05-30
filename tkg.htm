@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>-</title>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="tkg.js"></script>
+<script type="text/javascript" src="tkg_table.js"></script>
+<style TYPE="text/css">
+h2{
+  margin: 3px;
+  padding: 3px;
+  font-size: 18pt;
+}
+body, input {
+  font-family: arial, helvetica;
+}
+#game {
+  width: 320px;
+  margin: 0 auto;  
+}
+#titlebox, #presentation {
+  width:100%;
+  display:table;
+  //height: 250px;
+  background-color: #ddb;
+}
+ 
+#title {
+  //font-size: 20pt;
+  display: table-cell;
+  //text-align: center;
+  width: 100%;
+  vertical-align: middle;
+}
+.redbold{
+  color:red; 
+  font-weight:bold; 
+  font-size:120%;
+}
+.leftstatus{
+  float:left;  
+  padding: 2px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.rightstatus{
+  padding: 2px;
+  font-weight: bold;
+  float:right;  
+}
+.q, .a, .u {
+  clear:both;
+}
+.q {
+  font-weight: bold;
+  font-size:30pt;
+  height:30pt; 
+  text-align:center; 
+  background:#afa;
+}
+.a, .u {
+  font-size:14pt; 
+  height:30pt; 
+  text-align:left; 
+  padding:2px;
+  font-family: monospace;
+}
+.a {
+  background:#aaf;
+}
+.u {
+  background:#faa;
+}
+.ui {
+  font-size: 18pt;
+  border:black 1px solid;
+  margin: 2px;
+  width: 95%;
+  font-style:Arial;
+}
+#inputform{
+  background:#ccc; 
+  //padding:10px;
+}
+#sol .wrong {
+  background-color:red; 
+  color:#faa; 
+  white-space:pre;
+}
+#ans .remain {
+  color:blue;
+}
+#sol .remain {
+  color: red;
+}
+
+.outlineQA {
+  clear:both;
+  background:#ddb; 
+  clear:both; 
+  margin:3px 0px; 
+  border:2px solid black;
+}
+
+</style>
+</head>
+
+<body>
+<div id="game">
+<div id="titlebox">
+<div id="title"><h2>タイピング考略ゲーム (TKG)</h2>
+<ul style="padding-left:.5em; margin-left:.5em;">
+<li>略語を正式名称で答えてください。全<span id="N_OF_Q">x</span>問。 (例：USA → United States of America)
+<li>大文字・小文字の区別は問いません。
+<li>「/」「,」「-」はスペースで代用入力できます。
+<li>対戦相手はコンピュータです。早く打ち終えた方が勝ちです。
+<li>コンピュータ入力速度選択：<select name="level_select" id="level_select" class="ui" style="width:auto;">
+<option value="400">速い</option>
+<option value="600" selected>普通</option>
+<option value="800">遅い</option>
+</select>
+</ul>
+</div>
+</div>
+<div id="presentation">
+<div class="leftstatus">Question <span id="number">0</span></div>
+<div class="rightstatus">Point: <span id="point">0</span></div>
+<div style="clear:both; border:none;"></div>
+<div class="outlineQA" style="border-color:#080;">
+  <b>[Q]</b> <span id="hint"></span>
+  <div id="quiz" class="q"></div>
+</div><!-- class="outlineQA"[0] -->
+<div class="outlineQA" style="border-color:#00a;">
+  <b>[AI]</b> 
+  <div id="ans" class="a"></div>
+</div><!-- class="outlineQA"[1] -->
+<div class="outlineQA" style="border-color:#a00;">
+  <b>[You]</b>
+  <div class="u" style="position:relative;"><span id="sol"></span>
+    <div id="result" style="position:absolute; left:0; right:0;bottom:0; width:100%; height:30pt; text-align:center; font-size:200%; font-weight:bold;">
+      <span style="color:red;">&#x25ef;</span>
+      <span style="color:blue;">×</span>
+    </div>
+  </div>
+  <div id="inputform" style="width:100%; both:clear; text-align:center;">
+    <input type="text" value="" name="inp_ans" id="inp_ans"  class="ui">
+  </div>
+</div><!-- class="outlineQA"[2] -->
+</div><!-- id="presentation" -->
+<div id="inputform" style="width:100%; both:clear; text-align:center;">
+  <input type="button" id="start" name="st_button"  class="ui" value="開始(Enter)"> 
+</div>
+</div><!-- id="game" -->
+<div id="debug"></div>
+<hr>
+<footer style="text-align:right;">Released: 2021-05-30</footer>
+</body>

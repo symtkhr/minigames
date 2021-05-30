@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>-</title>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="qg.js"></script>
+<script type="text/javascript" src="qg_table.js"></script>
+<style TYPE="text/css">
+h2{
+  margin: 3px;
+  padding: 3px;
+  font-family: arial;
+}
+#game {
+  width: 320px;
+  margin: 0 auto;  
+}
+#titlebox, #presentation {
+  width:100%;
+  height: 150px;
+  background-color: #ffc;
+}
+#titlebox {
+  display:table;
+}
+#title {
+  font-size: 20pt;
+  display: table-cell;
+  font-family: arial;
+  text-align: center;
+  width: 100%;
+  vertical-align: middle;
+}
+#titlebox.level {
+  height: 230px;
+}
+input.ui {
+  font-size: 30px;
+  line-height: 40px;
+  height: 45px;
+  border:black 1px solid;
+  margin: 2px;
+  width: 100%;
+  padding: 2px;
+  box-sizing:border-box;
+}
+strong {
+  color:red; 
+  font-weight:bold; 
+  font-size:120%;
+}
+.leftstatus{
+  font-family: arial; 
+  float:left;  
+  //height:2em;
+}
+.rightstatus{
+  font-family: arial;
+  font-weight: bold;
+  float:right;  
+  //height:2em;
+  font-size:16pt;
+}
+.kanji{
+  font-size:30pt;
+  line-height:30pt;
+  font-family:serif; 
+  height:30pt; 
+  text-align:center; 
+  clear:both;
+}
+#quiz {
+  clear:both;
+  line-height:30pt;
+}
+#ruby {
+  font-size:12pt;
+  height:12pt;
+  padding: 5px;
+  text-align:center;
+}
+#timer {
+  height: calc(42pt+10px);
+  font-size:30pt;
+  text-align:center;
+}
+#result {
+  text-align:center;
+}
+#ending, #result span {
+  display:none;
+}
+#desc {
+  min-height:35pt;
+}
+#command {
+  line-height: 10px;
+}
+#inputform {
+  background:#ccc; 
+  padding:10px;
+}
+@font-face {
+  font-family: "traditional";
+  src: url("gw1567956.woff");
+}
+.traditional {
+  font-family: traditional, serif;
+}
+</style>
+</head>
+
+<body>
+<div id="game">
+<div id="titlebox">
+  <div id="title">
+    <h2>QG Master</h2>
+    <div id="config"></div>
+    <div id="ending">
+      <strong class="redbold">完走天晴!</strong><br />
+      Thanks for playing!
+    </div>
+  </div>
+</div>
+<div id="presentation">
+  <div class="leftstatus" id="number">
+    <u>LEVEL X</u><br>Clear: <span id="clear"></span> / <span id="toclear"></span>
+  </div>
+  <div class="rightstatus" id="survive">☆☆</div>
+  <div id="quiz" class="kanji traditional"></div>
+  <div id="ans"><div id="ruby"></div><div id="a" class="kanji"></div></div>
+  <div id="timer"></div>
+</div><!-- id="" -->
+<div id="inputform">
+  <div id="desc">
+    <span id="command">旧字で表記された単語の読みを答えてください(新かな表記・送りがな含む)。全<span id="qlen"></span>問。</span>
+    <div id="result">
+      <span style="color:red;  font-size:200%; font-weight:bold;">○</span>
+      <span style="color:blue; font-size:200%; font-weight:bold;">×</span>
+      <span>→ <strong class="redbold">昇格!</strong></span>
+      <span>→ <strong class="redbold">殘念!</strong> (Game Over...)</span>
+    </div>
+  </div>
+  <form method="post" name="start" onsubmit="q.state_machine(); return false;">
+    <input type="text" value="" name="inp_ans" id="inp_ans"  class="ui">
+  </form>
+  <input type="button" id="start" name="st_button"  class="ui" value="次へ(Enter)"> 
+</div><!-- id="inputform" -->
+</div><!-- id="game" -->
+<div id="debug"></div>
+<hr>
+<footer style="text-align:right;">Released: 2021-05-30</footer>
+</body>
